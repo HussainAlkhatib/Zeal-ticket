@@ -12,7 +12,8 @@ const {
   StringSelectMenuBuilder,
   ButtonBuilder,
   ButtonStyle,
-  PermissionFlagsBits
+  PermissionFlagsBits,
+  MessageFlags
 } = require("discord.js");
 
 // =======================
@@ -179,7 +180,7 @@ client.on("interactionCreate", async (interaction) => {
     }
 
     if (id === "close_ticket") {
-      await interaction.reply({ content: "🔒 سيتم إغلاق التذكرة بعد 5 ثواني...", ephemeral: true });
+      await interaction.reply({ content: "🔒 سيتم إغلاق التذكرة بعد 5 ثواني...", flags: MessageFlags.Ephemeral });
       setTimeout(async () => {
         try {
           if (interaction.channel && interaction.channel.deletable) await interaction.channel.delete();

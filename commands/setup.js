@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, PermissionFlagsBits, ChannelType, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, ChannelType, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, MessageFlags } = require('discord.js');
 const fs = require('fs/promises');
 const path = require('path');
 
@@ -52,7 +52,8 @@ module.exports = {
                 .setDescription('رتبة الموارد البشرية (لمراجعة التقديمات)')),
 
     async execute(interaction) {
-        await interaction.deferReply({ ephemeral: true });
+        // Use flags for ephemeral messages
+        await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
         const { guild, options } = interaction;
 
